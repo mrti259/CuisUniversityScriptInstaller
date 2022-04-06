@@ -1,0 +1,22 @@
+#!/bin/bash
+
+DEFAULT_IMAGE=CuisUniversity-{latest_tag}
+
+# Backup
+if [ "$1" = "new" ] && [ -f "{destino_imagenes}/$DEFAULT_IMAGE.image" ]; then
+    if [ ! -d {destino_imagenes}.old ]; then
+        mkdir {destino_imagenes}.old
+    fi
+
+    mv {destino_imagenes}/$DEFAULT_IMAGE.* {destino_imagenes}.old
+    echo Previously saved $DEFAULT_IMAGE.image moved to {destino_imagenes}.old
+fi
+
+# Crear imagen limpia si fue movida o no existe
+if [ ! -f "{destino_imagenes}/$DEFAULT_IMAGE.image" ]; then
+    cp {destino_cuis}/$DEFAULT_IMAGE.* {destino_imagenes}
+    echo New image created!
+fi
+
+# Ejecutar
+{destino_cuis}/vm/squeak {destino_imagenes}/$DEFAULT_IMAGE.image
