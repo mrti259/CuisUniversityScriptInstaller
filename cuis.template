@@ -19,4 +19,4 @@ if [ ! -f "{destino_imagenes}/$DEFAULT_IMAGE.image" ]; then
 fi
 
 # Ejecutar
-{destino_cuis}/vm/squeak {destino_imagenes}/$DEFAULT_IMAGE.image
+{destino_cuis}/vmLiveTyping/squeak {destino_imagenes}/$DEFAULT_IMAGE.image
